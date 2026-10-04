@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<!--
+  Bread of the Presence — A Companion for Mass and Adoration
+
+  Built by Claude, an AI model created by Anthropic, under the guidance
+  of Keith Francis (GitHub: keithintrinidad). Keith directed the app's
+  design, content, and features through conversation with Claude, but
+  did not write this code or the app's original prayers and notes
+  directly.
+
+  Licensed under CC BY-NC-SA 4.0 — free to share and adapt, never for
+  sale; any derivative must remain free and carry this same notice and
+  license. Full terms: LICENSE.md in this repository, or
+  https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bread of the Presence</title>
+<meta name="description" content="A personal companion for Mass and Eucharistic Adoration.">
+<meta name="theme-color" content="#0F1424">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Presence">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preload" href="fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/eb-garamond-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/eb-garamond-latin-400-italic.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/eb-garamond-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:500;font-display:swap;src:url("fonts/eb-garamond-latin-500-italic.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/eb-garamond-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/eb-garamond-latin-ext-400-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/eb-garamond-latin-ext-400-italic.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/eb-garamond-latin-ext-500-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/eb-garamond-greek-400-normal.woff2") format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/eb-garamond-greek-ext-400-normal.woff2") format("woff2");unicode-range:U+1F00-1FFF}
+@font-face{font-family:"Frank Ruhl Libre";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/frank-ruhl-libre-hebrew-400-normal.woff2") format("woff2");unicode-range:U+0307-0308,U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+:root{
+  --bg:#ECEEF3; --surface:#F8F9FB; --ink:#1C2333; --muted:#566079;
+  --rubric:#A3271F; --gilt:#9A7215; --line:#CED3DE; --ray-off:#CBD0DB;
+  --serif:"EB Garamond", Garamond, "Iowan Old Style", Georgia, serif;
+  --hebrew:"Frank Ruhl Libre", "SBL Hebrew", "Times New Roman", serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1424; --surface:#161D31; --ink:#E9E4D6; --muted:#9AA2B8;
+    --rubric:#E3796D; --gilt:#D9B45A; --line:#29324D; --ray-off:#2A3350;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1424; --surface:#161D31; --ink:#E9E4D6; --muted:#9AA2B8;
+  --rubric:#E3796D; --gilt:#D9B45A; --line:#29324D; --ray-off:#2A3350;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:1.18rem;line-height:1.55}
+main{max-width:36rem;margin:0 auto;padding:1.25rem 1.25rem 7rem}
+h1,h2,h3{font-weight:500;line-height:1.2;margin:0}
+h1{font-size:2.1rem;letter-spacing:.01em}
+h2{font-size:1.65rem;margin:2.2rem 0 .4rem}
+h3{font-size:1.25rem}
+p{margin:.6rem 0}
+.he{font-family:var(--hebrew);direction:rtl;unicode-bidi:isolate}
+.gk{font-style:normal}
+.lede{color:var(--muted);font-style:italic}
+.rubric{color:var(--rubric);font-variant:small-caps;letter-spacing:.02em}
+.rubric-line{color:var(--rubric);font-style:italic;font-size:1.02rem}
+.ref{color:var(--muted);font-size:.95rem}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gilt);outline-offset:3px;border-radius:2px}
+
+/* Masthead */
+.mast{padding:.6rem 0 1.4rem;border-bottom:1px solid var(--line);margin-bottom:.4rem}
+.mast-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.theme-btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:.3rem .75rem .3rem .5rem;cursor:pointer;font-size:.95rem;flex-shrink:0;margin-top:.35rem}
+.mast .he{display:block;color:var(--gilt);font-size:1.5rem;margin-top:.3rem;text-align:left}
+.mast p{margin:.5rem 0 0;color:var(--muted);font-size:1.02rem}
+.mast details.why{border-bottom:0;margin-top:.4rem}
+.mast details.why>summary{padding:.4rem 0;color:var(--gilt)}
+.mast details.why .body p{color:var(--ink);font-size:1.08rem;margin:.6rem 0}
+.mast details.why .body p.lede{color:var(--muted)}
+
+/* Sections */
+section[data-tab]{display:none}
+section[data-tab].on{display:block}
+
+/* Expandable entries */
+details{border-bottom:1px solid var(--line)}
+details>summary{list-style:none;cursor:pointer;padding:.85rem 0;display:flex;gap:.8rem;align-items:baseline}
+details>summary::-webkit-details-marker{display:none}
+summary .n{color:var(--rubric);min-width:1.6rem;font-variant-numeric:oldstyle-nums}
+summary .t{flex:1}
+summary .post{color:var(--rubric);font-variant:small-caps;font-size:1rem;white-space:nowrap}
+summary::after{content:"+";color:var(--muted);margin-left:.4rem}
+details[open]>summary::after{content:"−"}
+.body{padding:0 0 1.1rem 2.4rem}
+.body.flush{padding-left:0}
+.note{border-left:2px solid var(--gilt);padding:.1rem 0 .1rem .9rem;margin:.8rem 0;font-size:1.06rem}
+.note b{font-weight:600;color:var(--gilt)}
+.part{color:var(--muted);font-style:italic;margin:1.6rem 0 .2rem;font-size:1.05rem}
+
+/* Prayers */
+.prayer{white-space:pre-line;margin:.8rem 0}
+.prayer.latin{font-style:italic;color:var(--muted)}
+.amen{font-variant:small-caps}
+
+/* Holy Hour */
+.hour{text-align:center;padding:1rem 0 .5rem}
+.hour svg{width:min(78vw,300px);height:auto;display:block;margin:0 auto}
+.hour .ray{stroke:var(--ray-off);stroke-width:2.2;stroke-linecap:round}
+.hour .ray.lit{stroke:var(--gilt)}
+.hour .host{fill:none;stroke:var(--gilt);stroke-width:1.5}
+.hour .clock{font-family:var(--serif);font-size:22px;fill:var(--ink);text-anchor:middle}
+.hour .mv{font-family:var(--serif);font-size:12px;fill:var(--muted);text-anchor:middle;font-style:italic}
+@media (prefers-reduced-motion:no-preference){.hour .ray{transition:stroke .6s ease}}
+.movement{text-align:left;margin:1rem 0 .4rem;min-height:6.5rem}
+.movement h3{color:var(--gilt)}
+.controls{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:.8rem 0}
+.btn{border:1px solid var(--line);background:var(--surface);padding:.5rem 1.1rem;border-radius:999px;cursor:pointer}
+.btn.primary{background:var(--gilt);border-color:var(--gilt);color:var(--bg)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:.4rem .9rem;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.toggle{display:flex;gap:.5rem;align-items:center;justify-content:center;color:var(--muted);font-size:1rem}
+
+/* Names */
+.name{padding:1rem 0;border-bottom:1px solid var(--line)}
+.name .orig{font-size:1.7rem;color:var(--gilt);display:block;line-height:1.3}
+.name .tr{font-style:italic}
+
+/* Mine */
+.field{width:100%;font:inherit;font-size:1.05rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.55rem .7rem}
+textarea.field{min-height:6rem;resize:vertical}
+.row{display:flex;gap:.5rem;margin:.5rem 0}
+.row .field{flex:1}
+.list{list-style:none;padding:0;margin:.6rem 0}
+.list li{padding:.6rem 0;border-bottom:1px solid var(--line);display:flex;gap:.6rem;align-items:flex-start}
+.list li .grow{flex:1}
+.list li.done .txt{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.meta{color:var(--muted);font-size:.9rem}
+.x{border:0;background:none;color:var(--muted);cursor:pointer;padding:0 .2rem;font-size:1.1rem}
+.empty{color:var(--muted);font-style:italic}
+.status{color:var(--muted);font-size:.95rem;min-height:1.4em}
+
+/* Tab bar */
+.mast-btns{display:flex;gap:.45rem;align-items:center;flex-shrink:0;margin-top:.35rem}
+.mast-btns .theme-btn{margin-top:0}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;cursor:pointer;padding:0}
+.foot{text-align:center;margin:3rem 0 0;padding-top:1.2rem;border-top:1px solid var(--line)}
+.linkbtn{border:0;background:none;color:var(--muted);text-decoration:underline;text-decoration-color:var(--gilt);text-underline-offset:3px;cursor:pointer;font-size:1rem;padding:.3rem}
+.about{position:fixed;inset:0;z-index:20;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.about[hidden]{display:none}
+.about-bar{position:sticky;top:0;background:var(--bg);padding:.7rem 1rem;border-bottom:1px solid var(--line)}
+.about-body{max-width:36rem;margin:0 auto;padding:1.4rem 1.25rem 3rem}
+.about .kicker{color:var(--rubric);font-variant:small-caps;letter-spacing:.03em;margin:0}
+.about h2{margin:.2rem 0 1rem;font-size:1.9rem}
+.about h3{color:var(--gilt);margin:2rem 0 .4rem;font-size:1.35rem}
+.about a{color:var(--gilt);text-underline-offset:3px}
+.about .terms{list-style:none;padding:0;margin:.4rem 0 1rem}
+.about .terms li{padding:.6rem 0;border-bottom:1px solid var(--line)}
+.about .terms li:first-child{border-top:1px solid var(--line)}
+.about .terms b{color:var(--gilt);font-weight:600}
+.about .small{font-size:.95rem;color:var(--muted)}
+.about .seal{text-align:center;color:var(--muted);font-style:italic;margin-top:2rem;font-size:.98rem}
+.about .seal+.seal{margin-top:.3rem;font-style:normal;color:var(--gilt)}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:10}
+nav.tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;max-width:36rem}
+nav.tabs li{flex:1}
+nav.tabs a{display:block;text-align:center;padding:.65rem .2rem .7rem;color:var(--muted);text-decoration:none;font-size:1rem}
+nav.tabs a[aria-current="page"]{color:var(--ink)}
+nav.tabs a[aria-current="page"]::before{content:"";display:block;width:1.4rem;height:2px;background:var(--rubric);margin:-.65rem auto .55rem}
+nav.tabs a:not([aria-current="page"])::before{content:"";display:block;height:2px;margin:-.65rem auto .55rem}
+</style>
+</head>
+<body>
+<main>
+
+<header class="mast">
+  <div class="mast-top">
+    <h1>Bread of the Presence</h1>
+    <div class="mast-btns">
+    <button class="icon-btn" id="infoBtn" aria-label="About this app">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".7" fill="currentColor"/></svg>
+    </button>
+    <button class="theme-btn" id="themeBtn" aria-label="Appearance: follows device">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path id="themeFill" d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+      <span id="themeLabel">Auto</span>
+    </button>
+    </div>
+  </div>
+  <span class="he" lang="he">לֶחֶם הַפָּנִים</span>
+  <p>A companion for Mass and Adoration. Instructions are in <span class="rubric">red</span>; prayers are in black.</p>
+  <details class="why"><summary><span class="t">Why "Bread of the Presence"</span></summary><div class="body flush">
+  <p><i>Lechem ha-panim</i> was the bread kept on the golden table in the Holy Place of the tabernacle and later the Temple: twelve loaves, one for each tribe (Exodus 25:23–30; Leviticus 24:5–9). Older English Bibles call it the "showbread."</p>
+  <div class="note"><b>Beneath the word.</b> Literally "bread of the face." <span class="he" lang="he">פָּנִים</span> (<i>panim</i>) means face, and it is the Old Testament's ordinary way of speaking of God's presence. The bread was to be set "before my face always" (Exodus 25:30).</div>
+  <p>The loaves were renewed every Sabbath and eaten by the priests in the holy place (Leviticus 24:8–9). David ate them when he fled from Saul (1 Samuel 21:1–6), and Jesus himself recalls that moment (Mark 2:25–26). Hebrews 9:2 names the bread among the furnishings of the first tent.</p>
+  <p>A Talmudic tradition (Menachot 29a) says that at the pilgrim feasts the priests lifted the table so the people could see the bread and be reminded of God's love for them. Catholic writers such as Brant Pitre have traced the line from that gesture to the elevation of the Host at Mass and to the monstrance in Adoration.</p>
+  <p>The thread runs on through the manna in the wilderness and Jesus's words in John 6, "I am the bread of life," to the Last Supper. The bread that once stood before God's face is fulfilled in Christ, who is himself the presence of God, now given under the appearance of bread at the altar and kept in the tabernacle.</p>
+  <p class="lede">So the title holds a promise: what Israel set before God, God now sets before us.</p>
+  </div></details>
+</header>
+
+<!-- ============ MASS ============ -->
+<section data-tab="mass" class="on" aria-labelledby="h-mass">
+<h2 id="h-mass">Before Mass</h2>
+<p class="lede">Arrive a few minutes early. Kneel, settle, and pray one of these.</p>
+
+<details><summary><span class="t">At the table of the Presence</span></summary><div class="body flush">
+<p class="ref">Exodus 25:30; Leviticus 24:5–9</p>
+<p class="prayer">Lord God of Israel,
+you commanded that bread be set before your face continually,
+twelve loaves on the golden table,
+so that your people would never be absent from your sight.
+
+I come now as one more loaf among your people,
+to be set before you.
+Take the scattered pieces of this week,
+the work, the numbers, the unfinished things,
+and lay them on your table.
+Let the Word I hear find me,
+and let the Bread I adore find me again.
+Through Christ, who is himself the Bread of the Presence.
+<span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">On the road to Emmaus</span></summary><div class="body flush">
+<p class="ref">Luke 24:13–35</p>
+<p class="prayer">Lord Jesus,
+you walked beside two disciples who did not know you,
+and opened the Scriptures until their hearts burned.
+Walk this road with me today.
+When the readings are proclaimed, open them.
+Where I have studied the words, let me now meet the Word.
+As they knew you in the breaking of the bread,
+let me know you there,
+even before I am able to share it.
+Stay with me, for the day is far spent.
+<span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">Setting an intention</span></summary><div class="body flush">
+<p>Every Mass is offered for the whole Church and the world, and you may also bring a particular intention to it. Name one person or need before the entrance procession, and hold it especially at the Collect and at the offering of the gifts.</p>
+<p><a href="#mine" data-go="mine" style="color:var(--gilt)">Keep a list of intentions</a></p>
+</div></details>
+
+<h2>Walking through the Mass</h2>
+<p class="lede">What happens, why, and what it may feel like coming from the Breaking of Bread and the Anglican table. Follow the spoken texts in your parish missalette.</p>
+
+<p class="part">The Introductory Rites</p>
+
+<details><summary><span class="n">1</span><span class="t">Entrance and Sign of the Cross</span><span class="post">stand</span></summary><div class="body">
+<p>The priest reverences the altar with a kiss. The altar is treated as a sign of Christ himself, the place where his one sacrifice is made present. The whole assembly then begins in the name of the Trinity, signing themselves with the cross.</p>
+<div class="note"><b>From the Anglican table.</b> The shape here, with procession, greeting and gathering, will feel very familiar.</div>
+</div></details>
+
+<details><summary><span class="n">2</span><span class="t">Penitential Act and Kyrie</span><span class="post">stand</span></summary><div class="body">
+<p>The community acknowledges its sin together before approaching the Word and the altar. The <i>Kyrie</i> is often kept in Greek even in the Latin Rite, a trace of the Church's earliest liturgical language.</p>
+<div class="note"><b>Beneath the word.</b> <span class="gk" lang="grc">ἐλέησον</span> (<i>eleēson</i>, "have mercy") is the cry of the blind men by the road at Jericho (Matthew 20:30–31).</div>
+<div class="note"><b>From the Breaking of Bread.</b> You will know the call to "examine yourself" (1 Corinthians 11:28) as private preparation. Here it is done corporately at the outset. Mortal sin is brought to the sacrament of Reconciliation; this rite is not a substitute for it.</div>
+</div></details>
+
+<details><summary><span class="n">3</span><span class="t">Gloria</span><span class="post">stand</span></summary><div class="body">
+<p>Sung or said on Sundays outside Advent and Lent, and on feasts. It opens with the angels' song over Bethlehem (Luke 2:14) and moves into praise of the Father and the Lamb.</p>
+</div></details>
+
+<details><summary><span class="n">4</span><span class="t">Collect</span><span class="post">stand</span></summary><div class="body">
+<p>The priest says "Let us pray" and then pauses. That silence is for you: place your intention in it. The prayer that follows "collects" (<i>colligere</i>) the prayers of everyone present into one.</p>
+<div class="note"><b>From the Anglican table.</b> Same word, same function. Many Prayer Book collects were Cranmer's translations of these Latin prayers.</div>
+</div></details>
+
+<p class="part">The Liturgy of the Word</p>
+
+<details><summary><span class="n">5</span><span class="t">First Reading</span><span class="post">sit</span></summary><div class="body">
+<p>On Sundays this is usually from the Old Testament, chosen to echo the Gospel of the day. Read it typologically and listen for the shape the Gospel will fill. Augustine's principle applies: the New is hidden in the Old, and the Old is made plain in the New.</p>
+</div></details>
+
+<details><summary><span class="n">6</span><span class="t">Responsorial Psalm</span><span class="post">sit</span></summary><div class="body">
+<p>The people answer the first reading with Israel's own prayer book, singing a refrain between verses. The Psalm is the congregation's reply to what God has just said.</p>
+</div></details>
+
+<details><summary><span class="n">7</span><span class="t">Second Reading</span><span class="post">sit</span></summary><div class="body">
+<p>Usually from an epistle, read more or less continuously from week to week, so it may not share the day's theme.</p>
+</div></details>
+
+<details><summary><span class="n">8</span><span class="t">Gospel Acclamation</span><span class="post">stand</span></summary><div class="body">
+<p>Everyone stands to greet the Gospel. The Alleluia is silenced through Lent and returns at the Easter Vigil.</p>
+<div class="note"><b>Beneath the word.</b> <span class="he" lang="he">הַלְלוּ־יָהּ</span> (<i>hallelu-Yah</i>), "praise Yah," a plural imperative that summons the whole assembly.</div>
+</div></details>
+
+<details><summary><span class="n">9</span><span class="t">Gospel</span><span class="post">stand</span></summary><div class="body">
+<p>At the announcement, trace a small cross on your forehead, lips and heart: the Word in the mind, on the mouth, in the heart. The Church teaches that when the Gospel is proclaimed, Christ himself speaks (<i>Sacrosanctum Concilium</i> 7).</p>
+<div class="note"><b>From the Breaking of Bread.</b> The candles, incense and kissing of the book are not ornament over Scripture. They are love for Scripture expressed with the body.</div>
+</div></details>
+
+<details><summary><span class="n">10</span><span class="t">Homily</span><span class="post">sit</span></summary><div class="body">
+<p>In some parishes, catechumens are kindly sent out after the homily to break open the Word together. This is an ancient practice, and baptized candidates usually remain. Follow whatever your OCIA team has arranged.</p>
+</div></details>
+
+<details><summary><span class="n">11</span><span class="t">Profession of Faith</span><span class="post">stand</span></summary><div class="body">
+<p>The Nicene Creed. Bow at the words about the Incarnation; on Christmas and the Annunciation, kneel instead.</p>
+<div class="note"><b>From the Anglican table.</b> The same creed, the same words of faith.</div>
+</div></details>
+
+<details><summary><span class="n">12</span><span class="t">Universal Prayer</span><span class="post">stand</span></summary><div class="body">
+<p>Intercessions for the Church, the world, those in need and the local community. Add your own intention silently under each response.</p>
+</div></details>
+
+<p class="part">The Liturgy of the Eucharist</p>
+
+<details><summary><span class="n">13</span><span class="t">Preparation of the Gifts</span><span class="post">sit</span></summary><div class="body">
+<p>Bread and wine are brought forward from the people. The priest adds a drop of water to the wine. This is read as our humanity joined to Christ's divinity, and also recalls the blood and water from his side (John 19:34).</p>
+<div class="note"><b>Beneath the word.</b> <span class="gk" lang="grc">εὐχαριστία</span>, "thanksgiving," stands close to the Hebrew <span class="he" lang="he">תּוֹדָה</span> (<i>todah</i>), the thanksgiving sacrifice. An old rabbinic tradition held that in the age to come every sacrifice would cease except the <i>todah</i>.</div>
+</div></details>
+
+<details><summary><span class="n">14</span><span class="t">Preface and Holy, Holy</span><span class="post">stand</span></summary><div class="body">
+<p>The dialogue "Lift up your hearts" is among the oldest words of the liturgy. It already appears in the <i>Apostolic Tradition</i> of the early third century. The <i>Sanctus</i> joins Isaiah's seraphim (Isaiah 6:3) to Palm Sunday's crowd (Psalm 118:26): heaven and earth in one song (Hebrews 12:22–24; Revelation 4:8).</p>
+<p class="rubric-line">Kneel after the Sanctus.</p>
+</div></details>
+
+<details><summary><span class="n">15</span><span class="t">Calling down the Spirit</span><span class="post">kneel</span></summary><div class="body">
+<p>The priest extends his hands over the bread and wine and asks the Father to send the Holy Spirit to make them holy. A bell may ring. Later, after the consecration, the Spirit is invoked a second time, this time over the people, that we may become one body.</p>
+<div class="note"><b>Beneath the word.</b> <span class="gk" lang="grc">ἐπίκλησις</span> (<i>epiklēsis</i>), "calling upon."</div>
+<div class="note"><b>From the charismatic room.</b> The Spirit you have known in prayer and gifts is the one asked for here, at the centre of the liturgy, over the gifts and over the gathered people.</div>
+<p class="prayer">Spirit of the living God,
+who hovered over the waters
+and overshadowed the Virgin,
+come down upon these gifts,
+and upon us who kneel around them.
+<span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="n">16</span><span class="t">Institution and Consecration</span><span class="post">kneel</span></summary><div class="body">
+<p>The priest speaks Christ's words over the bread and the chalice and elevates each. The Church teaches that at this moment the bread and wine become the Body and Blood of Christ. Their substance is changed while their appearances remain (<i>Catechism</i> 1376). Look at the Host and the chalice as each is raised.</p>
+<div class="note"><b>From the Breaking of Bread.</b> "Do this in remembrance of me" you know deeply. The Catholic reading of <span class="gk" lang="grc">ἀνάμνησις</span> leans on the Hebrew <span class="he" lang="he">זִכָּרוֹן</span> (<i>zikkaron</i>, Exodus 12:14). It is the Passover sense of memorial, in which the past saving act becomes present to those who keep it. So the Mass does not repeat Calvary. It makes the one sacrifice present (<i>Catechism</i> 1366–1367).</div>
+<p class="rubric-line">A traditional silent prayer at each elevation:</p>
+<p class="prayer">My Lord and my God. <span class="ref">(John 20:28)</span></p>
+</div></details>
+
+<details><summary><span class="n">17</span><span class="t">Mystery of Faith</span><span class="post">kneel</span></summary><div class="body">
+<p>The people's acclamation of the death, resurrection and coming of the Lord. It is the "proclaim the Lord's death until he comes" of 1 Corinthians 11:26, sung.</p>
+</div></details>
+
+<details><summary><span class="n">18</span><span class="t">Offering and Intercessions</span><span class="post">kneel</span></summary><div class="body">
+<p>The Church offers the spotless Victim to the Father and, with him, offers itself. Then it prays for the Pope and bishop, the living and the dead, in communion with Mary, the apostles and all the saints. Your study of the communion of saints is enacted here in the space of a paragraph.</p>
+</div></details>
+
+<details><summary><span class="n">19</span><span class="t">Doxology and Great Amen</span><span class="post">kneel</span></summary><div class="body">
+<p>"Through him, with him, in him" lifts everything to the Father, and the whole assembly answers <i>Amen</i>. Around AD 155, Justin Martyr described the people giving their assent with this same word at the end of the Eucharistic prayer.</p>
+<div class="note"><b>Beneath the word.</b> <span class="he" lang="he">אָמֵן</span>, from the root of firmness and reliability: "it stands."</div>
+</div></details>
+
+<p class="part">The Communion Rite</p>
+
+<details><summary><span class="n">20</span><span class="t">The Lord's Prayer</span><span class="post">stand</span></summary><div class="body">
+<p>After "deliver us from evil," the priest continues alone with a short prayer for peace. Then everyone joins in "For the kingdom, the power and the glory…".</p>
+<div class="note"><b>From both your traditions.</b> Wait for the priest. Saying the doxology straight on is the most common giveaway of a newcomer, and nobody minds.</div>
+</div></details>
+
+<details><summary><span class="n">21</span><span class="t">Sign of Peace</span><span class="post">stand</span></summary><div class="body">
+<p>A handshake or bow to those nearby, in keeping with Matthew 5:23–24: be reconciled before you bring your gift.</p>
+</div></details>
+
+<details><summary><span class="n">22</span><span class="t">Breaking of the Bread and Lamb of God</span><span class="post">stand</span></summary><div class="body">
+<p>The priest breaks the Host and drops a small piece into the chalice, a sign of the living, risen Body and Blood united.</p>
+<div class="note"><b>From the Breaking of Bread.</b> "The breaking of the bread" (Acts 2:42) is the oldest name for this whole action. The name of the meeting you grew up in belongs to this moment.</div>
+<div class="note"><b>Beneath the word.</b> <span class="gk" lang="grc">ὁ ἀμνὸς τοῦ θεοῦ</span>, John the Baptist's words in John 1:29, and through them the Passover lamb.</div>
+<p class="rubric-line">In most places, kneel when the Lamb of God ends.</p>
+</div></details>
+
+<details><summary><span class="n">23</span><span class="t">Behold the Lamb</span><span class="post">kneel</span></summary><div class="body">
+<p>The priest shows the Host to the people, joining John 1:29 with the marriage supper of the Lamb (Revelation 19:9). The people answer with words adapted from the centurion, the outsider whose faith Jesus praised (Matthew 8:8). As one not yet receiving, you can make that answer with particular honesty.</p>
+</div></details>
+
+<details><summary><span class="n">24</span><span class="t">Communion</span><span class="post">as guided</span></summary><div class="body">
+<p>See the Communion tab for this season of preparation, including coming forward for a blessing and spiritual communion.</p>
+<p><a href="#communion" data-go="communion" style="color:var(--gilt)">Open Communion</a></p>
+</div></details>
+
+<details><summary><span class="n">25</span><span class="t">Prayer after Communion</span><span class="post">stand</span></summary><div class="body">
+<p>Brief silence, then the priest's prayer. Use the silence. It is the closest thing the Mass has to the stillness of Adoration.</p>
+</div></details>
+
+<p class="part">The Concluding Rites</p>
+
+<details><summary><span class="n">26</span><span class="t">Blessing and Dismissal</span><span class="post">stand</span></summary><div class="body">
+<p>The Mass is named from its ending. The old dismissal <i>Ite, missa est</i> ("Go, it is the sending") gave us <i>missa</i>, the Mass. Worship ends by sending you out.</p>
+<p class="prayer">Lord, you have sent me.
+Let what I have seen this morning
+be carried into what I do this week:
+honest work, patient words,
+and attention to whoever is in front of me.
+Go with me, and bring me back.
+<span class="amen">Amen.</span></p>
+</div></details>
+</section>
+
+<!-- ============ COMMUNION ============ -->
+<section data-tab="communion" aria-labelledby="h-comm">
+<h2 id="h-comm">Communion, for this season</h2>
+<p class="lede">While you prepare for full communion with the Church, this is your place at the Communion Rite.</p>
+
+<details open><summary><span class="t">Why not yet</span></summary><div class="body flush">
+<p>Receiving the Eucharist is the Church's sign of a communion already shared, in faith, sacraments and governance (<i>Catechism</i> 1398–1401). Paul ties the one bread to the one body (1 Corinthians 10:16–17), and the word there is <span class="gk" lang="grc">κοινωνία</span>. Waiting is not a verdict on the sincerity of your faith. It honours the sign until it can be true in every sense, and the waiting can itself become prayer.</p>
+</div></details>
+
+<details><summary><span class="t">Coming forward for a blessing</span></summary><div class="body flush">
+<p>Many parishes welcome those not receiving to come forward in the line with arms crossed over the chest. The priest or minister then offers a blessing instead of the Host. Practice varies, so ask your OCIA director or priest what your parish does. Remaining in the pew in prayer is equally fitting.</p>
+<p class="rubric-line">Either way, pray a spiritual communion as the others receive.</p>
+</div></details>
+
+<details><summary><span class="t">At the edge of the table</span></summary><div class="body flush">
+<p class="ref">Matthew 15:27; Mark 5:27–29</p>
+<p class="prayer">Lord Jesus,
+I am not yet at your table, but I am near it:
+near enough to see, near enough to long.
+The woman of Canaan asked only for the crumbs,
+and you praised her faith.
+The woman in the crowd reached only for your hem,
+and power went out from you.
+I reach now with desire, which is all I can bring.
+Come to me in the way you choose,
+as you know how to come.
+Keep the longing honest and do not let it cool,
+until the day I receive you with your whole Church.
+<span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">Act of spiritual communion</span></summary><div class="body flush">
+<p class="ref">St Alphonsus Liguori</p>
+<p class="prayer">My Jesus, I believe that you are present in the Most Holy Sacrament.
+I love you above all things, and I desire to receive you into my soul.
+Since I cannot at this moment receive you sacramentally,
+come at least spiritually into my heart.
+I embrace you as if you were already there,
+and unite myself wholly to you.
+Never permit me to be separated from you.
+<span class="amen">Amen.</span></p>
+<div class="note"><b>Why this is not a consolation prize.</b> The Council of Trent named spiritual communion as a real way of receiving the fruit of the sacrament through desire animated by faith and charity (Session XIII, ch. 8).</div>
+</div></details>
+
+<details><summary><span class="t">While the others receive</span></summary><div class="body flush">
+<p class="prayer">Lord, I watch your people come to you:
+the old and the young, the steady and the struggling.
+Bless each one as they receive you.
+Make them what they eat.
+And make me ready, in your time.
+<span class="amen">Amen.</span></p>
+</div></details>
+</section>
+
+<!-- ============ ADORATION ============ -->
+<section data-tab="adore" aria-labelledby="h-adore">
+<h2 id="h-adore">Holy Hour</h2>
+<p class="lede">Four movements of equal length. Each ray is a share of the time you give; watch them fill.</p>
+
+<div class="hour">
+  <svg id="rays" viewBox="0 0 220 220" role="img" aria-label="Holy Hour progress">
+    <g id="rayG"></g>
+    <circle class="host" cx="110" cy="110" r="50"/>
+    <text class="clock" id="clock" x="110" y="114">60:00</text>
+    <text class="mv" id="mvSmall" x="110" y="134">Ready</text>
+  </svg>
+</div>
+
+<div class="controls">
+  <div class="seg" role="group" aria-label="Length">
+    <button data-len="15" aria-pressed="false">15 min</button>
+    <button data-len="30" aria-pressed="false">30 min</button>
+    <button data-len="60" aria-pressed="true">60 min</button>
+  </div>
+</div>
+<div class="controls">
+  <button class="btn primary" id="startBtn">Begin</button>
+  <button class="btn" id="resetBtn">Reset</button>
+</div>
+<label class="toggle"><input type="checkbox" id="chime"> Soft chime between movements</label>
+
+<div class="movement" id="movement" aria-live="polite"></div>
+
+<h2>Names to rest on</h2>
+<p class="lede">For the third movement. Take one name and stay with it.</p>
+<div id="names"></div>
+
+<h2>Prayers before the Blessed Sacrament</h2>
+
+<details><summary><span class="t">On arriving</span></summary><div class="body flush">
+<p class="ref">Psalm 46:10 (46:11 in the Hebrew)</p>
+<p>"Be still" translates <span class="he" lang="he">הַרְפּוּ</span> (<i>harpu</i>), "let go, let your hands drop." Begin there.</p>
+<p class="prayer">Lord Jesus, truly present,
+I let go of what I carried in.
+You were here before I came,
+and you will be here when I leave.
+For this hour, let me simply be with you.
+<span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">Offering the mind</span></summary><div class="body flush">
+<p class="ref">Mark 12:30</p>
+<p class="prayer">Lord, you know how I come to you:
+with questions and cross-references,
+the Hebrew and the Greek open on the table.
+I do not leave my mind at the door.
+You made it, and you asked to be loved with it.
+But here, before you, let the study come to rest.
+Let me stop parsing the Word
+and simply be in the presence of the One it speaks of.
+What I cannot resolve, I leave with you.
+What I have understood, I offer back.
+What I am not meant to grasp, let me adore.
+<span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">Come, Holy Spirit</span></summary><div class="body flush">
+<p class="ref">Acts 1:14; 2:1–4</p>
+<p class="prayer">Holy Spirit,
+you came upon those who were gathered and waiting in prayer.
+I wait here as they waited.
+I ask for no sign but this:
+to know that he is here, and to love him more.
+If you give a word, a song, a stillness, I receive it.
+If you give only silence, I receive that too.
+<span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">The Angel's prayer</span></summary><div class="body flush">
+<p class="ref">Fátima, 1916</p>
+<p class="prayer">My God, I believe, I adore, I hope, and I love you.
+I ask pardon for those who do not believe,
+do not adore, do not hope, and do not love you.
+<span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">On leaving</span></summary><div class="body flush">
+<p class="prayer">Lord, I go back to the work, the screens and the people.
+You remain here, and you go with me.
+Let this hour sit underneath the rest of the day,
+the way the foundation sits under the house:
+unseen, and holding everything up.
+<span class="amen">Amen.</span></p>
+<p class="rubric-line">Genuflect before leaving if the Sacrament is reserved; kneel on both knees if it is exposed.</p>
+</div></details>
+
+<h2>Benediction</h2>
+<p class="lede">Sung when the Sacrament is exposed and the priest blesses the people with the monstrance.</p>
+
+<details><summary><span class="t">O Salutaris Hostia</span></summary><div class="body flush">
+<p class="ref">St Thomas Aquinas. Sung at exposition.</p>
+<p class="prayer latin" lang="la">O salutaris Hostia,
+quae caeli pandis ostium,
+bella premunt hostilia:
+da robur, fer auxilium.
+
+Uni trinoque Domino
+sit sempiterna gloria,
+qui vitam sine termino
+nobis donet in patria. Amen.</p>
+<p class="prayer">O saving Victim, opening wide
+the gate of heaven:
+enemies press their war upon us;
+give strength, bring help.
+
+To the Lord, one and three,
+be glory without end,
+who grants us life without limit
+in the homeland. <span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">Tantum Ergo</span></summary><div class="body flush">
+<p class="ref">St Thomas Aquinas; English by Edward Caswall. Sung before the blessing.</p>
+<p class="prayer latin" lang="la">Tantum ergo Sacramentum
+veneremur cernui:
+et antiquum documentum
+novo cedat ritui:
+praestet fides supplementum
+sensuum defectui.
+
+Genitori, Genitoque
+laus et iubilatio,
+salus, honor, virtus quoque
+sit et benedictio:
+procedenti ab utroque
+compar sit laudatio. Amen.</p>
+<p class="prayer">Down in adoration falling,
+lo! the sacred Host we hail;
+lo! o'er ancient forms departing,
+newer rites of grace prevail;
+faith for all defects supplying,
+where the feeble senses fail.
+
+To the everlasting Father,
+and the Son who reigns on high,
+with the Holy Ghost proceeding
+forth from each eternally,
+be salvation, honour, blessing,
+might and endless majesty. <span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">The Divine Praises</span></summary><div class="body flush">
+<p class="rubric-line">Said after the blessing, each line repeated by the people.</p>
+<p class="prayer">Blessed be God.
+Blessed be his holy Name.
+Blessed be Jesus Christ, true God and true Man.
+Blessed be the Name of Jesus.
+Blessed be his most Sacred Heart.
+Blessed be his most Precious Blood.
+Blessed be Jesus in the most holy Sacrament of the altar.
+Blessed be the Holy Spirit, the Paraclete.
+Blessed be the great Mother of God, Mary most holy.
+Blessed be her holy and Immaculate Conception.
+Blessed be her glorious Assumption.
+Blessed be the name of Mary, Virgin and Mother.
+Blessed be Saint Joseph, her most chaste spouse.
+Blessed be God in his angels and in his saints.</p>
+</div></details>
+</section>
+
+<!-- ============ PRAYERS ============ -->
+<section data-tab="prayers" aria-labelledby="h-pr">
+<h2 id="h-pr">Prayers of the Church</h2>
+<p class="lede">Classic Eucharistic prayers, tested by centuries of use.</p>
+
+<details><summary><span class="t">Anima Christi</span></summary><div class="body flush">
+<p class="ref">Fourteenth century. Traditionally prayed after Mass.</p>
+<p class="prayer">Soul of Christ, sanctify me.
+Body of Christ, save me.
+Blood of Christ, inebriate me.
+Water from the side of Christ, wash me.
+Passion of Christ, strengthen me.
+O good Jesus, hear me.
+Within thy wounds hide me.
+Suffer me not to be separated from thee.
+From the malicious enemy defend me.
+In the hour of my death call me,
+and bid me come unto thee,
+that with thy saints I may praise thee
+for ever and ever. <span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">Adoro te devote</span></summary><div class="body flush">
+<p class="ref">St Thomas Aquinas; English by Gerard Manley Hopkins. Opening stanzas.</p>
+<p class="prayer latin" lang="la">Adoro te devote, latens Deitas,
+quae sub his figuris vere latitas:
+tibi se cor meum totum subiicit,
+quia te contemplans totum deficit.</p>
+<p class="prayer">Godhead here in hiding, whom I do adore,
+masked by these bare shadows, shape and nothing more,
+see, Lord, at thy service low lies here a heart
+lost, all lost in wonder at the God thou art.
+
+Seeing, touching, tasting are in thee deceived;
+how says trusty hearing? that shall be believed;
+what God's Son has told me, take for truth I do;
+Truth himself speaks truly or there's nothing true.</p>
+</div></details>
+
+<details><summary><span class="t">Before Mass (St Thomas Aquinas)</span></summary><div class="body flush">
+<p class="ref">From the Latin <i>Omnipotens sempiterne Deus</i>. Prayed now as preparation of desire.</p>
+<p class="prayer">Almighty and eternal God,
+behold, I come to the sacrament of your only-begotten Son,
+our Lord Jesus Christ.
+I come as one sick to the physician of life,
+as one unclean to the fountain of mercy,
+as one blind to the light of eternal brightness,
+as one poor and needy to the Lord of heaven and earth.
+I ask the abundance of your boundless generosity
+to heal my sickness, wash my uncleanness,
+enlighten my blindness, enrich my poverty,
+and clothe my nakedness,
+so that I may approach the Bread of angels,
+the King of kings and Lord of lords,
+with reverence and humility,
+with contrition and devotion,
+with purity and faith,
+as befits the salvation of my soul.
+<span class="amen">Amen.</span></p>
+</div></details>
+
+<details><summary><span class="t">O Sacrament most holy</span></summary><div class="body flush">
+<p class="prayer">O Sacrament most holy, O Sacrament divine,
+all praise and all thanksgiving be every moment thine.</p>
+</div></details>
+
+<details><summary><span class="t">Spiritual communion (St Alphonsus)</span></summary><div class="body flush">
+<p class="prayer">My Jesus, I believe that you are present in the Most Holy Sacrament.
+I love you above all things, and I desire to receive you into my soul.
+Since I cannot at this moment receive you sacramentally,
+come at least spiritually into my heart.
+I embrace you as if you were already there,
+and unite myself wholly to you.
+Never permit me to be separated from you.
+<span class="amen">Amen.</span></p>
+</div></details>
+</section>
+
+<!-- ============ MINE ============ -->
+<section data-tab="mine" aria-labelledby="h-mine">
+<h2 id="h-mine">Intentions</h2>
+<p class="lede">People and needs to carry to Mass. Mark them when they are answered.</p>
+<div class="row">
+  <input class="field" id="intIn" placeholder="Add an intention" aria-label="New intention">
+  <button class="btn primary" id="intAdd">Add</button>
+</div>
+<ul class="list" id="intList"></ul>
+
+<h2>My prayers</h2>
+<p class="lede">Prayers you have written or found and want to keep close.</p>
+<input class="field" id="prTitle" placeholder="Title" aria-label="Prayer title">
+<textarea class="field" id="prText" placeholder="The prayer" aria-label="Prayer text" style="margin-top:.5rem"></textarea>
+<div class="row"><button class="btn primary" id="prAdd">Save prayer</button></div>
+<div id="prList"></div>
+
+<h2>After Mass</h2>
+<p class="lede">A line or two on what struck you in the readings, the homily or the silence.</p>
+<textarea class="field" id="ntText" placeholder="What stayed with me" aria-label="Mass note"></textarea>
+<div class="row"><button class="btn primary" id="ntAdd">Save note</button></div>
+<ul class="list" id="ntList"></ul>
+
+<h2>Keep a copy</h2>
+<p>Everything on this tab stays on this device only. Copy it out from time to time to keep it safe.</p>
+<div class="row"><button class="btn" id="copyAll">Copy all as text</button></div>
+<p class="status" id="status" aria-live="polite"></p>
+</section>
+
+<footer class="foot"><button class="linkbtn" id="footInfo">About this app and its licence</button></footer>
+</main>
+
+<section class="about" id="about" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" hidden>
+  <div class="about-bar">
+    <button class="icon-btn" id="aboutClose" aria-label="Close About">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+  </div>
+  <div class="about-body" id="aboutBody">
+    <p class="kicker">Bread of the Presence</p>
+    <h2 id="aboutTitle">About this app</h2>
+    <p>A companion for Mass and Eucharistic Adoration: a walk through the Mass, prayers for a season of preparation before receiving Communion, a Holy Hour guide and classic Eucharistic prayers. Once installed, it works without an internet connection.</p>
+
+    <h3>How it was made</h3>
+    <p>This app was built by <b>Claude</b>, an AI model created by <b>Anthropic</b>, under the guidance of <b>Keith Francis</b> (GitHub: <a href="https://github.com/keithintrinidad" target="_blank" rel="noopener">keithintrinidad</a>).</p>
+    <p>Its concept, a pocket companion for Mass and Adoration, was inspired by the <i>Mass and Adoration Companion</i> of Vinny Flynn and Erin Flynn. No text from that book is used. The original prayers, the notes on each part of the Mass and the Holy Hour guide were written by Claude, drawing on Keith's conversations with it about Scripture, its Hebrew and Greek background, and worship. Keith directed the app's content, features and packaging through those conversations, but did not write the code directly.</p>
+    <p>It is a companion to the <a href="https://github.com/keithintrinidad/Rosary-Helper" target="_blank" rel="noopener">Rosary Helper</a> and <a href="https://github.com/keithintrinidad/Catholic-Prayers" target="_blank" rel="noopener">Prayers for Catholics</a> apps, made the same way.</p>
+
+    <h3>Licence</h3>
+    <p>This app, including its code, design, original prayers and notes, and arrangement of content, is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Licence</a> (CC BY-NC-SA 4.0).</p>
+    <p>You are free to share it and to adapt it, on these terms:</p>
+    <ul class="terms">
+      <li><b>Attribution.</b> Give appropriate credit to Claude (Anthropic) as the builder and Keith Francis as the person who directed its creation, link to the licence, and say if you made changes.</li>
+      <li><b>NonCommercial.</b> It may never be sold, or bundled into anything that is sold.</li>
+      <li><b>ShareAlike.</b> Any version built from it must be shared under this same licence, so every copy stays free.</li>
+    </ul>
+    <p class="small">This summary is not a substitute for the licence itself. The traditional prayers (the Anima Christi, the hymns and prayers of St Thomas Aquinas, St Alphonsus Liguori's act of spiritual communion, the Divine Praises, the Fátima prayer, and the translations by Edward Caswall and Gerard Manley Hopkins) are in the public domain and are not claimed as original work. The texts of the Order of Mass are not reproduced. The typefaces, EB Garamond and Frank Ruhl Libre, are used under the SIL Open Font License 1.1.</p>
+
+    <h3>Source code</h3>
+    <p>The full source, licence and README are at <a href="https://github.com/keithintrinidad/Bread-of-the-Presence" target="_blank" rel="noopener">github.com/keithintrinidad/Bread-of-the-Presence</a>.</p>
+
+    <p class="seal">© 2026 Keith Francis · CC BY-NC-SA 4.0</p>
+    <p class="seal" aria-hidden="true">✠</p>
+  </div>
+</section>
+
+<nav class="tabs" aria-label="Sections">
+<ul>
+  <li><a href="#mass" data-go="mass" aria-current="page">Mass</a></li>
+  <li><a href="#communion" data-go="communion">Communion</a></li>
+  <li><a href="#adore" data-go="adore">Adoration</a></li>
+  <li><a href="#prayers" data-go="prayers">Prayers</a></li>
+  <li><a href="#mine" data-go="mine">Mine</a></li>
+</ul>
+</nav>
+
+<script>
+(function(){
+/* ---------- Theme: auto / light / dark ---------- */
+const TKEY="bread-of-presence-theme", modes=["auto","light","dark"];
+const names={auto:"Auto",light:"Light",dark:"Dark"};
+const fills={auto:"M12 3.5a8.5 8.5 0 0 1 0 17z",light:"",dark:"M12 3.5a8.5 8.5 0 1 1 0 17a8.5 8.5 0 1 1 0-17z"};
+const metaTheme=document.querySelector('meta[name="theme-color"]');
+const mq=window.matchMedia?matchMedia("(prefers-color-scheme: dark)"):null;
+let mode="auto";
+try{const m=localStorage.getItem(TKEY); if(modes.includes(m)) mode=m;}catch(_){}
+function applyTheme(){
+  const root=document.documentElement;
+  if(mode==="auto") root.removeAttribute("data-theme"); else root.setAttribute("data-theme",mode);
+  const dark=mode==="dark"||(mode==="auto"&&mq&&mq.matches);
+  if(metaTheme) metaTheme.setAttribute("content",dark?"#0F1424":"#ECEEF3");
+  document.getElementById("themeLabel").textContent=names[mode];
+  document.getElementById("themeFill").setAttribute("d",fills[mode]);
+  document.getElementById("themeBtn").setAttribute("aria-label","Appearance: "+(mode==="auto"?"follows device":names[mode].toLowerCase())+". Tap to change.");
+}
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  mode=modes[(modes.indexOf(mode)+1)%3];
+  try{localStorage.setItem(TKEY,mode);}catch(_){}
+  applyTheme();
+});
+if(mq){try{mq.addEventListener("change",applyTheme);}catch(_){}}
+applyTheme();
+
+/* ---------- About ---------- */
+const aboutEl=document.getElementById("about");
+function openAbout(push){
+  aboutEl.hidden=false; document.body.style.overflow="hidden";
+  document.getElementById("aboutBody").parentElement.scrollTop=0;
+  if(push!==false){try{history.pushState({about:1},"","#about");}catch(_){}}
+  document.getElementById("aboutClose").focus({preventScroll:true});
+}
+function closeAbout(fromPop){
+  if(aboutEl.hidden) return;
+  aboutEl.hidden=true; document.body.style.overflow="";
+  if(!fromPop&&location.hash==="#about"){try{history.back();}catch(_){}}
+  document.getElementById("infoBtn").focus({preventScroll:true});
+}
+document.getElementById("infoBtn").addEventListener("click",()=>openAbout());
+document.getElementById("footInfo").addEventListener("click",()=>openAbout());
+document.getElementById("aboutClose").addEventListener("click",()=>closeAbout(false));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!aboutEl.hidden) closeAbout(false);});
+window.addEventListener("popstate",()=>{ if(!aboutEl.hidden) closeAbout(true); });
+
+/* ---------- Tabs ---------- */
+const tabs=["mass","communion","adore","prayers","mine"];
+function show(id){
+  if(!tabs.includes(id)) id="mass";
+  document.querySelectorAll("section[data-tab]").forEach(s=>s.classList.toggle("on",s.dataset.tab===id));
+  document.querySelectorAll("nav.tabs a").forEach(a=>{
+    if(a.dataset.go===id) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+  });
+  window.scrollTo(0,0);
+}
+document.addEventListener("click",e=>{
+  const a=e.target.closest("[data-go]");
+  if(!a) return;
+  e.preventDefault();
+  try{history.replaceState(null,"","#"+a.dataset.go);}catch(_){}
+  show(a.dataset.go);
+});
+if(location.hash==="#about"){ show("mass"); try{history.replaceState(null,"",location.pathname+"#mass");}catch(_){} openAbout(); }
+else show((location.hash||"#mass").slice(1));
+
+/* ---------- Names ---------- */
+const NAMES=[
+ {o:"אֵל רֳאִי",h:true,tr:"El Roi",m:"The God who sees me",r:"Genesis 16:13",
+  p:"Hagar named the God who met her at the spring in the wilderness. You see me here, before you, as I am. Let me see you in return, hidden in this bread."},
+ {o:"יְהוָה יִרְאֶה",h:true,tr:"Adonai Yir'eh",m:"The Lord will see to it; the Lord will provide",r:"Genesis 22:14",
+  p:"On the mountain you provided the lamb. Here is the Lamb you provided. Whatever I lack today, you have already seen to it.",
+  n:"The divine name is written YHWH. Following Jewish custom and the Church's own liturgical practice, it is read aloud as Adonai, \"the Lord.\""},
+ {o:"עִמָּנוּ אֵל",h:true,tr:"Immanu El",m:"God with us",r:"Isaiah 7:14; Matthew 1:23",
+  p:"Not God above us only, nor God ahead of us, but God with us, under the appearance of bread, a few feet from where I kneel."},
+ {o:"יְהוָה שָׁמָּה",h:true,tr:"Adonai Shammah",m:"The Lord is there",r:"Ezekiel 48:35",
+  p:"Ezekiel's city was given a new name: the Lord is there. Let this chapel bear that name for me, and let my life bear it too."},
+ {o:"ὁ ἄρτος τῆς ζωῆς",h:false,tr:"ho artos tēs zōēs",m:"The bread of life",r:"John 6:35, 48–51",
+  p:"I am. Bread. Life. Three words, and the crowd turned away. Let me not turn away; to whom would I go?"},
+ {o:"ὁ ἀμνὸς τοῦ θεοῦ",h:false,tr:"ho amnos tou theou",m:"The Lamb of God",r:"John 1:29; Revelation 5:6",
+  p:"The Lamb standing as though slain, at the centre of the throne. You are worshipped in heaven; let me worship you here."},
+ {o:"מָרַנָא תָא",h:true,tr:"Marana tha",m:"Our Lord, come!",r:"1 Corinthians 16:22; Revelation 22:20",
+  p:"The first Christians kept this Aramaic prayer untranslated. You have come, you are here, and you will come again. Come."}
+];
+const nb=document.getElementById("names");
+nb.innerHTML=NAMES.map(x=>`<div class="name">
+  <span class="orig ${x.h?'he':'gk'}" ${x.h?'lang="he"':'lang="grc"'} style="${x.h?'text-align:left':''}">${x.o}</span>
+  <h3><span class="tr">${x.tr}</span>: ${x.m}</h3>
+  <p class="ref">${x.r}</p>
+  ${x.n?`<p class="ref">${x.n}</p>`:""}
+  <p>${x.p}</p></div>`).join("");
+
+/* ---------- Holy Hour ---------- */
+const MOVES=[
+ {t:"Arrive",g:"Let go (Psalm 46:10). Kneel or sit. Pray the arrival prayer below, then say nothing at all. Notice that he is here."},
+ {t:"The Word",g:"Take a short Gospel passage, perhaps tomorrow's or Sunday's. Read it slowly, then read it again. Stop at the phrase that catches you and stay with it."},
+ {t:"The Name",g:"Choose one name from the list below. Repeat it quietly, letting your breath carry it. When your mind wanders, return to the name."},
+ {t:"Offer and rest",g:"Bring your intentions one at a time, then give thanks. Spend the last minutes in plain silence before the Host."}
+];
+const RAYS=60, g=document.getElementById("rayG"), ns="http://www.w3.org/2000/svg";
+for(let i=0;i<RAYS;i++){
+  const a=(i/RAYS)*2*Math.PI-Math.PI/2, long=(i%15===0);
+  const r1=long?60:64, r2=long?102:94;
+  const l=document.createElementNS(ns,"line");
+  l.setAttribute("x1",110+r1*Math.cos(a)); l.setAttribute("y1",110+r1*Math.sin(a));
+  l.setAttribute("x2",110+r2*Math.cos(a)); l.setAttribute("y2",110+r2*Math.sin(a));
+  l.setAttribute("class","ray"); g.appendChild(l);
+}
+const rayEls=[...g.children];
+let lenMin=60, elapsed=0, running=false, startedAt=0, base=0, tick=null, lastMove=-1, wake=null, actx=null;
+const clock=document.getElementById("clock"), mvSmall=document.getElementById("mvSmall"),
+      mvBox=document.getElementById("movement"), startBtn=document.getElementById("startBtn");
+function fmt(s){s=Math.max(0,Math.ceil(s));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");}
+function render(){
+  const total=lenMin*60, frac=Math.min(1,elapsed/total), lit=Math.floor(frac*RAYS);
+  rayEls.forEach((r,i)=>r.classList.toggle("lit",i<lit||frac>=1));
+  clock.textContent=fmt(total-elapsed);
+  const mi=Math.min(3,Math.floor(frac*4));
+  if(frac>=1){
+    mvSmall.textContent="Amen";
+    mvBox.innerHTML=`<h3>The hour is complete</h3><p>Thank him, genuflect, and go in peace.</p>`;
+  }else if(elapsed===0&&!running){
+    mvSmall.textContent="Ready";
+    mvBox.innerHTML=`<h3>${MOVES[0].t}</h3><p>${MOVES[0].g}</p>`;
+  }else{
+    mvSmall.textContent=(mi+1)+" of 4: "+MOVES[mi].t;
+    mvBox.innerHTML=`<h3>${MOVES[mi].t}</h3><p>${MOVES[mi].g}</p>`;
+  }
+  if(running&&mi!==lastMove){ if(lastMove!==-1) chime(); lastMove=mi; }
+}
+function chime(){
+  if(!document.getElementById("chime").checked||!actx) return;
+  try{
+    const now=actx.currentTime;
+    [528,792,1056].forEach((f,k)=>{
+      const o=actx.createOscillator(), v=actx.createGain();
+      o.type="sine"; o.frequency.value=f;
+      v.gain.setValueAtTime(0.0001,now);
+      v.gain.exponentialRampToValueAtTime(0.12/(k+1),now+0.02);
+      v.gain.exponentialRampToValueAtTime(0.0001,now+3.5);
+      o.connect(v).connect(actx.destination); o.start(now); o.stop(now+3.6);
+    });
+  }catch(_){}
+}
+async function lockScreen(){try{if("wakeLock" in navigator) wake=await navigator.wakeLock.request("screen");}catch(_){wake=null;}}
+function unlockScreen(){try{if(wake){wake.release();wake=null;}}catch(_){}}
+function step(){
+  elapsed=base+(Date.now()-startedAt)/1000;
+  if(elapsed>=lenMin*60){elapsed=lenMin*60;pause();chime();}
+  render();
+}
+function start(){
+  if(elapsed>=lenMin*60) reset();
+  if(!actx){try{actx=new (window.AudioContext||window.webkitAudioContext)();}catch(_){}}
+  else if(actx.state==="suspended"){try{actx.resume();}catch(_){}}
+  running=true; startedAt=Date.now(); base=elapsed;
+  if(lastMove===-1) lastMove=0;
+  tick=setInterval(step,500); lockScreen();
+  startBtn.textContent="Pause"; render();
+}
+function pause(){
+  running=false; clearInterval(tick); tick=null; unlockScreen();
+  startBtn.textContent=elapsed>=lenMin*60?"Begin again":"Resume";
+}
+function reset(){
+  pause(); elapsed=0; base=0; lastMove=-1; startBtn.textContent="Begin"; render();
+}
+startBtn.addEventListener("click",()=>running?pause():start());
+document.getElementById("resetBtn").addEventListener("click",reset);
+document.querySelectorAll("[data-len]").forEach(b=>b.addEventListener("click",()=>{
+  lenMin=+b.dataset.len;
+  document.querySelectorAll("[data-len]").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+  reset();
+}));
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&running){lockScreen();step();}});
+render();
+
+/* ---------- Mine (stored on this device) ---------- */
+const KEY="bread-of-presence-v1";
+let data={intentions:[],prayers:[],notes:[]};
+try{const raw=localStorage.getItem(KEY); if(raw){const d=JSON.parse(raw); data={intentions:d.intentions||[],prayers:d.prayers||[],notes:d.notes||[]};}}catch(_){}
+const statusEl=document.getElementById("status");
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data));}catch(_){statusEl.textContent="Could not save on this device. Copy your entries to keep them.";}}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>new Date().toLocaleDateString(undefined,{day:"numeric",month:"short",year:"numeric"});
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+
+function drawMine(){
+  const il=document.getElementById("intList");
+  il.innerHTML=data.intentions.length?data.intentions.map(x=>`<li class="${x.done?'done':''}">
+    <input type="checkbox" data-int="${x.id}" ${x.done?'checked':''} aria-label="Mark answered">
+    <div class="grow"><div class="txt">${esc(x.text)}</div><div class="meta">Added ${esc(x.date)}${x.done?` · Answered ${esc(x.doneDate)}`:''}</div></div>
+    <button class="x" data-del-int="${x.id}" aria-label="Remove intention">×</button></li>`).join("")
+    :`<li class="empty">No intentions yet. Add a name or a need above.</li>`;
+  const pl=document.getElementById("prList");
+  pl.innerHTML=data.prayers.map(x=>`<details><summary><span class="t">${esc(x.title||"Untitled prayer")}</span></summary>
+    <div class="body flush"><p class="prayer">${esc(x.text)}</p>
+    <button class="btn" data-del-pr="${x.id}">Remove prayer</button></div></details>`).join("");
+  const nl=document.getElementById("ntList");
+  nl.innerHTML=data.notes.map(x=>`<li><div class="grow"><div class="meta">${esc(x.date)}</div><div style="white-space:pre-line">${esc(x.text)}</div></div>
+    <button class="x" data-del-nt="${x.id}" aria-label="Remove note">×</button></li>`).join("");
+}
+function addInt(){
+  const i=document.getElementById("intIn"), v=i.value.trim(); if(!v) return;
+  data.intentions.unshift({id:uid(),text:v,date:today(),done:false}); i.value=""; save(); drawMine();
+}
+document.getElementById("intAdd").addEventListener("click",addInt);
+document.getElementById("intIn").addEventListener("keydown",e=>{if(e.key==="Enter")addInt();});
+document.getElementById("prAdd").addEventListener("click",()=>{
+  const t=document.getElementById("prTitle"), x=document.getElementById("prText");
+  if(!x.value.trim()) return;
+  data.prayers.push({id:uid(),title:t.value.trim(),text:x.value.trim()}); t.value=""; x.value=""; save(); drawMine();
+});
+document.getElementById("ntAdd").addEventListener("click",()=>{
+  const x=document.getElementById("ntText"); if(!x.value.trim()) return;
+  data.notes.unshift({id:uid(),date:today(),text:x.value.trim()}); x.value=""; save(); drawMine();
+});
+document.addEventListener("change",e=>{
+  const id=e.target.dataset&&e.target.dataset.int; if(!id) return;
+  const it=data.intentions.find(x=>x.id===id); if(!it) return;
+  it.done=e.target.checked; it.doneDate=it.done?today():""; save(); drawMine();
+});
+document.addEventListener("click",e=>{
+  const t=e.target, d=t.dataset||{};
+  if(d.delInt){data.intentions=data.intentions.filter(x=>x.id!==d.delInt);save();drawMine();}
+  if(d.delPr&&confirm("Remove this prayer?")){data.prayers=data.prayers.filter(x=>x.id!==d.delPr);save();drawMine();}
+  if(d.delNt){data.notes=data.notes.filter(x=>x.id!==d.delNt);save();drawMine();}
+});
+document.getElementById("copyAll").addEventListener("click",async()=>{
+  const out=["BREAD OF THE PRESENCE: MY PAGES","","Intentions:"]
+    .concat(data.intentions.map(x=>`- ${x.text} (added ${x.date}${x.done?`, answered ${x.doneDate}`:""})`))
+    .concat(["","My prayers:"]).concat(data.prayers.map(x=>`\n${x.title||"Untitled"}\n${x.text}`))
+    .concat(["","After Mass:"]).concat(data.notes.map(x=>`\n${x.date}\n${x.text}`)).join("\n");
+  try{await navigator.clipboard.writeText(out);statusEl.textContent="Copied. Paste it into a note or email to keep a copy.";}
+  catch(_){statusEl.textContent="Copying isn't available here. Select and copy your entries manually.";}
+});
+drawMine();
+})();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
+</script>
+</body>
+</html>
