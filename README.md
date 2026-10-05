@@ -1,5 +1,7 @@
 # Bread of the Presence – PWA
 
+**▶ Open the app: [keithintrinidad.github.io/Bread-of-the-Presence](https://keithintrinidad.github.io/Bread-of-the-Presence/)**. Use it in the browser, or install it on your phone (see [Installing on a phone](#installing-on-a-phone)).
+
 A companion for Mass and Eucharistic Adoration. It walks through every part of the Mass, offers prayers for a season of preparation before receiving Communion, guides a Holy Hour, and gathers classic Eucharistic prayers. It works offline once installed, and runs entirely in the browser as static files: no build step, no server code.
 
 The name comes from *lechem ha-panim* (לֶחֶם הַפָּנִים), the bread set "before the face" of God in the tabernacle (Exodus 25:30). The app explains it under the title.
@@ -13,7 +15,12 @@ This app was built by **Claude**, an AI model created by **Anthropic**, under th
 - **Traditional prayers.** The Anima Christi, Adoro te devote (Hopkins translation), O Salutaris Hostia, Tantum Ergo (Caswall translation), St Thomas Aquinas's prayer before Mass, St Alphonsus Liguori's Act of Spiritual Communion, the Divine Praises, and the Fátima prayer.
 - **Design and build.** Keith Francis directed the app's content, features, and packaging through conversation with Claude, but did not write the code directly.
 
-It is a companion to the [Rosary Helper](https://github.com/keithintrinidad/Rosary-Helper) and [Prayers for Catholics](https://github.com/keithintrinidad/Catholic-Prayers) apps, made the same way.
+It is a companion to two other apps, made the same way:
+
+| App | Open the app | Source code |
+|---|---|---|
+| Rosary Helper | [keithintrinidad.github.io/Rosary-Helper](https://keithintrinidad.github.io/Rosary-Helper/) | [github.com/keithintrinidad/Rosary-Helper](https://github.com/keithintrinidad/Rosary-Helper) |
+| Prayers for Catholics | [keithintrinidad.github.io/Catholic-Prayers](https://keithintrinidad.github.io/Catholic-Prayers/) | [github.com/keithintrinidad/Catholic-Prayers](https://github.com/keithintrinidad/Catholic-Prayers) |
 
 ## What's in the package
 
@@ -32,7 +39,7 @@ Upload the folder contents as-is to any static host that serves **HTTPS** (servi
 
 - **Netlify:** drag the unzipped folder onto app.netlify.com/drop.
 - **Cloudflare Pages:** Create project → Direct upload → select the folder.
-- **GitHub Pages:** push the files to the repo root, then Settings → Pages → deploy from the `main` branch, root folder. For this repo the app will be at `https://keithintrinidad.github.io/Bread-of-the-Presence/`.
+- **GitHub Pages:** push the files to the repo root, then Settings → Pages → deploy from the `main` branch, root folder. For this repo the app is live at [keithintrinidad.github.io/Bread-of-the-Presence](https://keithintrinidad.github.io/Bread-of-the-Presence/).
 - **Existing site:** copy into a subfolder, e.g. `/presence/`.
 
 ## Installing on a phone

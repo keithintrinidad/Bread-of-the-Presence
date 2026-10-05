@@ -5,6 +5,9 @@ its code, design, original prayers and notes, and arrangement of content,
 is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike
 4.0 International License (CC BY-NC-SA 4.0)**.
 
+- Open the app: https://keithintrinidad.github.io/Bread-of-the-Presence/
+- Source code: https://github.com/keithintrinidad/Bread-of-the-Presence
+
 ## In short
 
 You are free to:
