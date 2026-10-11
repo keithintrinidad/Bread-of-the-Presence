@@ -1,6 +1,6 @@
 /* Bread of the Presence – service worker.
    Bump VERSION whenever any file changes so installed copies update. */
-const VERSION = "botp-v3";
+const VERSION = "botp-v2.1";
 const ASSETS = [
   "./",
   "index.html",
