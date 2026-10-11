@@ -2,7 +2,7 @@
   "name": "Bread of the Presence",
   "short_name": "Presence",
   "description": "A companion for Mass and Eucharistic Adoration, available offline.",
-  "id": "./",
+  "id": "bread-of-the-presence",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
